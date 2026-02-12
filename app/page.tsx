@@ -1,65 +1,133 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight, Bookmark, Sparkles, Zap, Shield } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
+      {/* Navbar */}
+      <nav className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-2xl font-bold tracking-tighter flex items-center gap-2"
+          >
+            <Bookmark className="w-6 h-6 fill-white" />
+            Bookly
+          </motion.div>
+          <motion.button
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="bg-white text-black px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-200 transition-colors"
+          >
+            Get Started
+          </motion.button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-6 min-h-[80vh] flex flex-col items-center justify-center text-center overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neutral-800/20 via-black to-black -z-10" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl mx-auto space-y-8"
+        >
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight bg-gradient-to-b from-white to-white/50 bg-clip-text text-transparent pb-4">
+            The Smart Manager <br /> for Your Bookmarks
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+            Beautifully organize, access, and share your digital life with
+            Bookly. The intelligent way to keep your favorite content at your
+            fingertips.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="pt-8"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:bg-gray-100 transition-all">
+              Get Started
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Feature Section */}
+      <section className="py-24 px-6 border-t border-white/10 bg-neutral-950/30">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid md:grid-cols-2 gap-12 items-center"
           >
-            Documentation
-          </a>
+            <div className="space-y-8">
+              <h2 className="text-4xl font-bold tracking-tight">
+                Intelligent Organization
+              </h2>
+              <p className="text-lg text-neutral-400 leading-relaxed">
+                Stop digging through messy folders. Bookly automatically
+                categorizes your links, extracts key insights, and makes
+                everything searchable instantly.
+              </p>
+              <div className="space-y-4">
+                {[
+                  { icon: Sparkles, text: "AI-powered tagging" },
+                  { icon: Zap, text: "Instant search retrieval" },
+                  { icon: Shield, text: "Private and secure" },
+                ].map((feature, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center gap-4 text-neutral-300"
+                  >
+                    <div className="p-2 border border-white/10 rounded-lg bg-white/5">
+                      <feature.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <span>{feature.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <motion.div
+              whileHover={{ rotate: 1 }}
+              className="relative aspect-video rounded-2xl border border-white/10 bg-neutral-900 overflow-hidden shadow-2xl shadow-purple-500/5"
+            >
+              {/* Abstract UI Representation */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-3/4 h-3/4 bg-neutral-800/50 rounded-xl border border-white/5 p-6 space-y-4">
+                  <div className="h-8 w-1/3 bg-neutral-700/50 rounded-lg animate-pulse" />
+                  <div className="space-y-2">
+                    <div className="h-4 w-full bg-neutral-700/30 rounded animate-pulse" />
+                    <div className="h-4 w-5/6 bg-neutral-700/30 rounded animate-pulse" />
+                    <div className="h-4 w-4/6 bg-neutral-700/30 rounded animate-pulse" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </main>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 border-t border-white/10 text-center text-neutral-500">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex items-center gap-2 font-semibold text-white">
+            <Bookmark className="w-5 h-5" />
+            Bookly
+          </div>
+          <p className="text-sm">© 2026 Prasad Dinnapurkar. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
