@@ -14,7 +14,6 @@ With Bookly, users can:
 
 Each user’s data is completely private and protected using database-level security policies.
 
----
 
 ## 🚀 Tech Stack
 
