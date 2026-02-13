@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ServiceWorkerUnregister } from "@/components/ServiceWorkerUnregister";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Smart Bookmark",
+  title: "Bookly",
   description: "Manange Bookmark with ease",
+  icons: {
+    icon: "/webicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +32,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ServiceWorkerUnregister />
+        <Toaster richColors position="top-center" />
         {children}
       </body>
     </html>

@@ -18,13 +18,15 @@ export default function Home() {
             <Bookmark className="w-6 h-6 fill-white" />
             Bookly
           </motion.div>
-          <motion.button
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="bg-white text-black px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-200 transition-colors"
-          >
-            Get Started
-          </motion.button>
+          <Link href="/login">
+            <motion.button
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="bg-white text-black px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-200 transition-colors cursor-pointer"
+            >
+              Get Started
+            </motion.button>
+          </Link>
         </div>
       </nav>
 
@@ -52,10 +54,12 @@ export default function Home() {
             whileTap={{ scale: 0.95 }}
             className="pt-8"
           >
-            <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:bg-gray-100 transition-all">
-              Get Started
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <Link href="/login">
+              <button className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:bg-gray-100 transition-all cursor-pointer">
+                Get Started
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
@@ -125,7 +129,9 @@ export default function Home() {
             <Bookmark className="w-5 h-5" />
             Bookly
           </div>
-          <p className="text-sm">© 2026 Prasad Dinnapurkar. All rights reserved.</p>
+          <p className="text-sm">
+            © 2026 Prasad Dinnapurkar. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
