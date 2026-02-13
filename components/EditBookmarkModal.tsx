@@ -32,7 +32,6 @@ export default function EditBookmarkModal({
   );
 
   useEffect(() => {
-    console.log("Modal mounted with bookmark:", bookmark);
     if (state?.error) {
       toast.error(state.error);
     }

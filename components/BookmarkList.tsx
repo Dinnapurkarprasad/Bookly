@@ -45,6 +45,12 @@ export default function BookmarkList({
             setBookmarks((current) =>
               current.filter((b) => b.id !== payload.old.id),
             );
+          } else if (payload.eventType === "UPDATE") {
+            setBookmarks((current) =>
+              current.map((b) =>
+                b.id === payload.new.id ? (payload.new as Bookmark) : b,
+              ),
+            );
           }
         },
       )
