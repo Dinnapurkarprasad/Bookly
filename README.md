@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bookly : Smart Bookmark App
 
-## Getting Started
+Bookly is a secure and modern realtime bookmark manager that allows users to sign in using Google and manage their personal bookmarks effortlessly.
+The application features a clean, responsive, and animated UI designed for a smooth user experience.
 
-First, run the development server:
+Live Demo: https://bookly-orcin-six.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+With Bookly, users can:
+- Sign in securely using Google OAuth
+- Add bookmarks (title + URL)
+- View their private bookmarks
+- Delete their own bookmarks
+- Experience realtime updates without refreshing the page
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Each user’s data is completely private and protected using database-level security policies.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Tech Stack
 
-## Learn More
+### Frontend
+- Next.js 16 (App Router)
+- Tailwind CSS v4
+- Framer Motion (for animations and smooth transitions)
+- Sonner (for toast notifications)
 
-To learn more about Next.js, take a look at the following resources:
+The UI is fully responsive and designed with a modern layout using Tailwind CSS.  
+Framer Motion is used to enhance user interactions with smooth animations.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend
+- Supabase
+  - PostgreSQL Database
+  - Supabase Auth (Google OAuth Provider)
+  - Supabase Realtime
+  - Row Level Security (RLS)
+    
+ 
+## 📚 What I Learned
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Setting up and configuring Supabase from scratch
+- Integrating Google OAuth with Supabase Auth
+- Creating tables in PostgreSQL
+- Writing Row Level Security (RLS) policies to ensure private user data
+- Implementing realtime database subscriptions
+- Structuring a full-stack application using Next.js App Router
+- Designing a clean and responsive UI with Tailwind CSS and Framer Motion
 
-## Deploy on Vercel
+This project strengthened my understanding of building secure, realtime full-stack applications using modern tools.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧠 Challenges & Exploration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Since this was my first time working with Supabase, I explored the documentation thoroughly to understand authentication flow, session management, and database policies.
+
+A key learning experience was understanding how Row Level Security works at the database level and how it ensures true backend protection beyond frontend validation.
+
+Rather than facing major blockers, this project became an opportunity to explore a new backend ecosystem and understand how efficiently full-stack applications can be built using Next.js and Supabase together.
+
+
+## 🌍 Deployment
+
+The application is deployed on Vercel and connected to Supabase for production authentication and database services.
+
+
+## ⏳ Time Taken
+
+Completed within the 72-hour time limit.
