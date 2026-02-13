@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Bookmark, Sparkles, Zap, Shield } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -80,12 +81,12 @@ export default function Home() {
               </h2>
               <p className="text-lg text-neutral-400 leading-relaxed">
                 Stop digging through messy folders. Bookly automatically
-                categorizes your links, extracts key insights, and makes
+                categorizes your links,and makes
                 everything searchable instantly.
               </p>
               <div className="space-y-4">
                 {[
-                  { icon: Sparkles, text: "AI-powered tagging" },
+                  { icon: Sparkles, text: "Manage Bookmarks with ease" },
                   { icon: Zap, text: "Instant search retrieval" },
                   { icon: Shield, text: "Private and secure" },
                 ].map((feature, idx) => (
@@ -104,19 +105,16 @@ export default function Home() {
 
             <motion.div
               whileHover={{ rotate: 1 }}
-              className="relative aspect-video rounded-2xl border border-white/10 bg-neutral-900 overflow-hidden shadow-2xl shadow-purple-500/5"
+              className="relative aspect-video rounded-md border border-white/10 bg-neutral-900 overflow-hidden shadow-2xl shadow-purple-500/5"
             >
-              {/* Abstract UI Representation */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-3/4 h-3/4 bg-neutral-800/50 rounded-xl border border-white/5 p-6 space-y-4">
-                  <div className="h-8 w-1/3 bg-neutral-700/50 rounded-lg animate-pulse" />
-                  <div className="space-y-2">
-                    <div className="h-4 w-full bg-neutral-700/30 rounded animate-pulse" />
-                    <div className="h-4 w-5/6 bg-neutral-700/30 rounded animate-pulse" />
-                    <div className="h-4 w-4/6 bg-neutral-700/30 rounded animate-pulse" />
-                  </div>
-                </div>
-              </div>
+              {/* Dashboard Screenshot */}
+              <Image
+                src="/Hero.png"
+                alt="Bookly Dashboard"
+                fill
+                className="object-cover p-4 rounded-md"
+                priority
+              />
             </motion.div>
           </motion.div>
         </div>
