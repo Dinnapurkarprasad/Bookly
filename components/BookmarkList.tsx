@@ -3,7 +3,7 @@
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import { deleteBookmark } from "@/app/actions";
-import { Trash2, ExternalLink, Pencil } from "lucide-react";
+import { Trash2, ExternalLink, Pencil, Search, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import EditBookmarkModal from "./EditBookmarkModal";
@@ -22,6 +22,7 @@ export default function BookmarkList({
 }) {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>(initialBookmarks);
   const [editingBookmark, setEditingBookmark] = useState<Bookmark | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
   const supabase = createClient();
 
   useEffect(() => {
@@ -61,21 +62,56 @@ export default function BookmarkList({
     };
   }, [supabase]);
 
+  const filteredBookmarks = bookmarks.filter((bookmark) => {
+    const searchLower = searchQuery.toLowerCase();
+    return (
+      bookmark.title?.toLowerCase().includes(searchLower) ||
+      bookmark.url.toLowerCase().includes(searchLower)
+    );
+  });
+
   return (
     <>
+      <div className="mb-8">
+        <div className="relative max-w-md">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Search className="h-5 w-5 text-neutral-500" />
+          </div>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search bookmarks by title or URL..."
+            className="block w-full pl-10 pr-10 py-2 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-white/20 transition-all sm:text-sm"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-neutral-500 hover:text-white transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
+        </div>
+      </div>
+
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
-          {bookmarks.length === 0 ? (
+          {filteredBookmarks.length === 0 ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="col-span-full text-center py-20 text-neutral-500 border border-white/10 rounded-2xl bg-white/5 border-dashed"
             >
-              <p>No bookmarks yet. Add one above!</p>
+              <p>
+                {searchQuery
+                  ? "No matching bookmarks found."
+                  : "No bookmarks yet. Add one above!"}
+              </p>
             </motion.div>
           ) : (
-            bookmarks.map((bookmark) => (
+            filteredBookmarks.map((bookmark) => (
               <motion.div
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
